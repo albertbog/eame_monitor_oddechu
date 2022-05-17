@@ -117,9 +117,10 @@ dataFile.print(tm.Day); dataFile.print(tm.Month); dataFile.print(tmYearToCalenda
 
   
 //  // Gyro
-//  dataFile.print(imu.gx());dataFile.print("\t");
-//  dataFile.print(imu.gy());dataFile.print("\t");
-//  dataFile.println(imu.gz());
+  dataFile.print(imu.gx());dataFile.print("\t");
+  dataFile.print(imu.gy());dataFile.print("\t");
+  dataFile.print(imu.gz());dataFile.print("\t");
+  dataFile.println(buzz_detect);
 
  buzz_detect = ((IMU.getGyroX_rads() <0.01 || IMU.getGyroY_rads() <0.01 || IMU.getGyroZ_rads() <0.01) && buzz_detect <1000 ) ? buzz_detect+1 : 0+died_signal;
 
