@@ -42,11 +42,11 @@ void setup() {
     Serial.println("initialization done.");
       dataFile =SD.open("dataFile.txt",FILE_WRITE); //open file
       if(!dataFile){ 
-//      Serial.println("Couldn't open file."); 
+      Serial.println("Couldn't open file."); 
       } 
     }else{
-//      Serial.println("initialization failed!");
-      while (1){tone(BUZZER, 1000);};
+      Serial.println("initialization failed!");
+      //while (1){tone(BUZZER, 1000);};
     }
 
     IMU.begin(); // Set registers - Always required
@@ -92,8 +92,8 @@ void loop() {
    
   //-- Scaled and calibrated output:
   // Accel
-dataFile.print(tm.Day); dataFile.print(tm.Month); dataFile.print(tmYearToCalendar(tm.Year));dataFile.print("\t");
-  dataFile.print(tm.Hour); dataFile.print(tm.Minute); dataFile.print(tm.Second);dataFile.print("\t");
+  dataFile.print(tm.Day); dataFile.print("."); dataFile.print(tm.Month); dataFile.print("."); dataFile.print(tmYearToCalendar(tm.Year)); dataFile.print("\t");
+  dataFile.print(tm.Hour); dataFile.print(":"); dataFile.print(tm.Minute); dataFile.print(":"); dataFile.print(tm.Second); dataFile.print("\t");
   
   dataFile.print(IMU.getAccelX_mss(),6);dataFile.print("\t");
   dataFile.print(IMU.getAccelY_mss(),6);dataFile.print("\t");
@@ -117,12 +117,12 @@ dataFile.print(tm.Day); dataFile.print(tm.Month); dataFile.print(tmYearToCalenda
 
   
 //  // Gyro
-  dataFile.print(imu.gx());dataFile.print("\t");
-  dataFile.print(imu.gy());dataFile.print("\t");
-  dataFile.print(imu.gz());dataFile.print("\t");
+  dataFile.print(IMU.getGyroX_rads());dataFile.print("\t");
+  dataFile.print(IMU.getGyroY_rads());dataFile.print("\t");
+  dataFile.print(IMU.getGyroZ_rads());dataFile.print("\t");
   dataFile.println(buzz_detect);
 
- buzz_detect = ((IMU.getGyroX_rads() <0.01 || IMU.getGyroY_rads() <0.01 || IMU.getGyroZ_rads() <0.01) && buzz_detect <1000 ) ? buzz_detect+1 : 0+died_signal;
+ buzz_detect = ((IMU.getGyroX_rads() <0.001 || IMU.getGyroY_rads() <0.001 || IMU.getGyroZ_rads() <0.001) && buzz_detect <1000 ) ? buzz_detect+1 : 0+died_signal;
 
 if(buzz_detect>950) digitalWrite(BUZZER, LOW);
 
@@ -142,7 +142,7 @@ if(buzz_detect>950) digitalWrite(BUZZER, LOW);
   Serial.print(IMU.getGyroY_rads(),6);
   Serial.print("\t");
   Serial.print(IMU.getGyroZ_rads(),6);
-   Serial.print("\t");
+  Serial.print("\t");
   Serial.println(buzz_detect);
   
 
