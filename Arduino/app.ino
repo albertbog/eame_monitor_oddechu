@@ -4,6 +4,7 @@
 #include <SD.h>
 
 #include <LiquidCrystal_I2C.h>
+#include <SoftwareSerial.h>
 
 #include <Wire.h>
 #include <TimeLib.h>
@@ -26,6 +27,10 @@ uint16_t died_signal = 0;
 
 LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27,16,2); //adres i rozmiar wyswietlacza
 
+SoftwareSerial BLE_serial(8,7); // (RX,TX) - zweryfikować przy podłączaniu
+
+
+
 const char *monthName[12] = 
 {
   "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
@@ -37,16 +42,19 @@ void setup() {
   pinMode(BUZZER, OUTPUT); // Set buzzer - pin 2 as an output
   
     Serial.begin(115200); // Start console
+    BLE_serial.begin(115200);
     //SD card initialization
     if (SD.begin(CS)) {
-    Serial.println("initialization done.");
+ //   Serial.println("initialization done.");
       dataFile =SD.open("dataFile.txt",FILE_WRITE); //open file
       if(!dataFile){ 
-      Serial.println("Couldn't open file."); 
+//      Serial.println("Couldn't open file."); 
       } 
     }else{
-      Serial.println("initialization failed!");
-      //while (1){tone(BUZZER, 1000);};
+        lcd.init();
+        lcd.backlight(); 
+        lcd.print("no card errror");
+        while(1){}
     }
 
     IMU.begin(); // Set registers - Always required
@@ -92,7 +100,7 @@ void loop() {
    
   //-- Scaled and calibrated output:
   // Accel
-  dataFile.print(tm.Day); dataFile.print("."); dataFile.print(tm.Month); dataFile.print("."); dataFile.print(tmYearToCalendar(tm.Year)); dataFile.print("\t");
+dataFile.print(tm.Day); dataFile.print("."); dataFile.print(tm.Month); dataFile.print("."); dataFile.print(tmYearToCalendar(tm.Year)); dataFile.print("\t");
   dataFile.print(tm.Hour); dataFile.print(":"); dataFile.print(tm.Minute); dataFile.print(":"); dataFile.print(tm.Second); dataFile.print("\t");
   
   dataFile.print(IMU.getAccelX_mss(),6);dataFile.print("\t");
@@ -114,23 +122,25 @@ void loop() {
     lcd.print('/');
     lcd.print(tmYearToCalendar(tm.Year));
 
-
-  
-//  // Gyro
   dataFile.print(IMU.getGyroX_rads());dataFile.print("\t");
   dataFile.print(IMU.getGyroY_rads());dataFile.print("\t");
   dataFile.print(IMU.getGyroZ_rads());dataFile.print("\t");
   dataFile.println(buzz_detect);
 
- buzz_detect = ((IMU.getGyroX_rads() <0.001 || IMU.getGyroY_rads() <0.001 || IMU.getGyroZ_rads() <0.001) && buzz_detect <1000 ) ? buzz_detect+1 : 0+died_signal;
-
-if(buzz_detect>950) digitalWrite(BUZZER, LOW);
 
 
+buzz_detect = ((IMU.getGyroX_rads() <0.001 || IMU.getGyroY_rads() <0.001 || IMU.getGyroZ_rads() <0.001) && buzz_detect <1000 ) ? buzz_detect+1 : 0+died_signal;
 
- Serial.print(tm.Day); Serial.print(tm.Month); Serial.print(tmYearToCalendar(tm.Year));Serial.print("\t");
-  Serial.print(tm.Hour); Serial.print(tm.Minute); Serial.print(tm.Second);Serial.print("\t");
+if(buzz_detect>950){ 
+
+  digitalWrite(BUZZER, LOW);
   
+
+}
+
+//// Serial.print(tm.Day); Serial.print(tm.Month); Serial.print(tmYearToCalendar(tm.Year));Serial.print("\t");
+////  Serial.print(tm.Hour); Serial.print(tm.Minute); Serial.print(tm.Second);Serial.print("\t");
+//  
  Serial.print(IMU.getAccelX_mss(),6);
   Serial.print("\t");
   Serial.print(IMU.getAccelY_mss(),6);
@@ -142,19 +152,29 @@ if(buzz_detect>950) digitalWrite(BUZZER, LOW);
   Serial.print(IMU.getGyroY_rads(),6);
   Serial.print("\t");
   Serial.print(IMU.getGyroZ_rads(),6);
-  Serial.print("\t");
+   Serial.print("\t");
   Serial.println(buzz_detect);
   
 
 //save,  close, open file again
   dataFile.flush();
+
+
+if(buzz_detect==950){
+  BLE_serial.write("0"); // Aplikacja ma identyczną notację
+                         // czyli "0" - trup, gdy przesłane coś innego, to jest ignorowane.
+  BLE_serial.end();
+
+}
+
+
 }
 
 
 
 ISR(TIMER1_COMPA_vect){
   TCNT1  = 0;                  //First, set the timer back to 0 so it resets for next interrupt
-  if(buzz_detect > 900 && buzz_detect <950){  digitalWrite(BUZZER, HIGH); died_signal =1000;} // Send 10KHz sound signal to 2 pin buzzer
+  if(buzz_detect > 900 && buzz_detect <950){  digitalWrite(BUZZER, HIGH); died_signal =1000; } // Send 10KHz sound signal to 2 pin buzzer
 }
 
 
