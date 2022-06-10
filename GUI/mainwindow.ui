@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>905</width>
+    <height>731</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Wgrywanie pliku</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox_TBR_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>80</y>
+          <width>781</width>
+          <height>161</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <widget class="QTextBrowser" name="textBrowser_tbr_2">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>731</width>
+           <height>101</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="textBrowser_pb_2">
+         <property name="geometry">
+          <rect>
+           <x>180</x>
+           <y>120</y>
+           <width>421</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>LADUJ PLIK</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>50</y>
+          <width>241</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'LM Roman'; font-size:16pt; font-weight:700; color:#0000ff;&quot;&gt; IBREATHE v1.0&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'LM Roman'; font-size:16pt; font-weight:700; color:#0000ff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'LM Roman'; font-size:16pt; font-weight:700; color:#0000ff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>20</y>
+          <width>481</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Dear, User! Welcome to our GUI application of a brand-new revolutionary device&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QDateTimeEdit" name="dateTimeEdit">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>260</y>
+          <width>194</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="displayFormat">
+         <string>dd/MM/yyyy HH:mm:ss</string>
+        </property>
+       </widget>
+       <widget class="QDateTimeEdit" name="dateTimeEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>300</y>
+          <width>194</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="displayFormat">
+         <string>dd/MM/yyyy HH:mm:ss</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>260</y>
+          <width>131</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Set analysis start time</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>300</y>
+          <width>131</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Set analysis end time</string>
+        </property>
+       </widget>
+       <widget class="QLCDNumber" name="lcdNumber">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>360</y>
+          <width>221</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 800 9pt &quot;Rockwell Extra Bold&quot;;</string>
+        </property>
+       </widget>
+       <widget class="QLCDNumber" name="lcdNumber_2">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>470</y>
+          <width>221</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 800 9pt &quot;Rockwell Extra Bold&quot;;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>340</y>
+          <width>221</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Average breaths per minute from X axis</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>450</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Average breaths per minute from Y axis</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="startButton">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>570</y>
+          <width>251</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>START Analysis</string>
+        </property>
+       </widget>
+       <widget class="QTextBrowser" name="textBrowser_Analysis">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>350</y>
+          <width>331</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>70</y>
+          <width>711</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Date                Time                   AccX               AccY                 AccZ            GyroX                GyroY               GyroZ              Counter</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>PyQT demo - zbiór funkcji</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox_RB">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>30</y>
+          <width>120</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>RadioButton</string>
+        </property>
+        <widget class="QRadioButton" name="radioButtonA">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>89</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>A</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QRadioButton" name="radioButtonB">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>89</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>B</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_LE">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>LineEdit + PushButton</string>
+        </property>
+        <widget class="QLineEdit" name="lineEdit_le">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>21</y>
+           <width>161</width>
+           <height>20</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="lineEdit_pb">
+         <property name="geometry">
+          <rect>
+           <x>184</x>
+           <y>20</y>
+           <width>101</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>WPROWADZ</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_CBX">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>30</y>
+          <width>120</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>ComboBox</string>
+        </property>
+        <widget class="QComboBox" name="comboBox">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>68</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>CBX1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>CBX2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>CBX3</string>
+          </property>
+         </item>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_LB">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>TextLabel + PushButton</string>
+        </property>
+        <widget class="QLabel" name="label_lbl">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>25</y>
+           <width>151</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="label_pb">
+         <property name="geometry">
+          <rect>
+           <x>184</x>
+           <y>20</y>
+           <width>101</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>AKT. CZAS</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_SLD">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>180</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Slider + TextLabel</string>
+        </property>
+        <widget class="QSlider" name="slider_sld">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>160</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+        <widget class="QLabel" name="slider_lbl">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>30</y>
+           <width>63</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_TBR">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>260</y>
+          <width>301</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>TextBrowser + Load File</string>
+        </property>
+        <widget class="QTextBrowser" name="textBrowser_tbr">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>261</width>
+           <height>101</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="textBrowser_pb">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>160</y>
+           <width>261</width>
+           <height>29</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>LADUJ PLIK</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>905</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuplik">
+    <property name="title">
+     <string>Plik</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuopcje">
+    <property name="title">
+     <string>Opcje</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menupomoc">
+    <property name="title">
+     <string>Pomoc</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menunarzedzia">
+    <property name="title">
+     <string>Narzędzia</string>
+    </property>
+   </widget>
+   <addaction name="menuplik"/>
+   <addaction name="menuopcje"/>
+   <addaction name="menunarzedzia"/>
+   <addaction name="menupomoc"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

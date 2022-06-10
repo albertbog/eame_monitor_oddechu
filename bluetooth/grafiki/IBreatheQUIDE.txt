@@ -1,0 +1,7 @@
+1. tekst z logo na B
+2. samo logo B
+
+z tłem gradient 1/2 1080x1080
+transparentne bez tła 1/2 1080x1080
+samo tło gradient
+wizualizacja 
