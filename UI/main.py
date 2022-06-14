@@ -25,6 +25,15 @@ def clear_console():
 # funkcja odpowiadająca za komunikację z użytkownikiem podczas wczytania pliku
 def start():
     clear_console()
+    calendar.clear()
+    timer.clear()
+    acc_x.clear()
+    acc_y.clear()
+    acc_z.clear()
+    gyro_x.clear()
+    gyro_y.clear()
+    gyro_z.clear()
+    counter.clear()
     print("-----------------------------------------------------------------------------------------------------------")
     print("                                              START                                                        ")
     print("-----------------------------------------------------------------------------------------------------------")
@@ -211,19 +220,21 @@ def plot_graphs(acc_x, acc_y, acc_z, acc_x_filtered, acc_y_filtered, peaks_x, pe
     # Dodanie subplotów do naszego plotu:)
     ax_1 = f_1.add_subplot(121)
     ax_2 = f_1.add_subplot(122)
-    # Disable x axis of our plot
-    ax_1.axes.xaxis.set_visible(False)
-    ax_2.axes.xaxis.set_visible(False)
+
     # Subplot 1 of acc_x axis
-    ax_1.plot(acc_x, linewidth=0.7)
+    ax_1.plot(np.arange(len(acc_x)), acc_x, linewidth=0.7)
     # Title subplotu
     ax_1.set_title("Unfiltered data")
+    ax_1.set_xlabel("Samples")
+    ax_1.set_ylabel("Raw data")
     # Subplot 2 of acc_x axis
-    ax_2.plot(acc_x_filtered, 'r', linewidth=0.7)
+    ax_2.plot(np.arange(len(acc_x_filtered)), acc_x_filtered, 'r', linewidth=0.7)
     ax_2.axhline(y=0, color='k', linewidth=0.5, linestyle='--')
     ax_2.plot(peaks_x, acc_x_filtered[peaks_x], "v")
     # Title subplotu
     ax_2.set_title("Filtered and normalized  data")
+    ax_2.set_xlabel("Samples")
+    ax_2.set_ylabel("Normalized filtered data")
     ax_2.legend(['Data', 'Zero-level', 'Peaks'])
     # Title całego plotu
     f_1.suptitle("X-axis")
@@ -235,28 +246,31 @@ def plot_graphs(acc_x, acc_y, acc_z, acc_x_filtered, acc_y_filtered, peaks_x, pe
     # Dodanie subplotów do naszego plotu:)
     ax_1 = f_2.add_subplot(121)
     ax_2 = f_2.add_subplot(122)
-    # Disable x axis of our plot
-    ax_1.axes.xaxis.set_visible(False)
-    ax_2.axes.xaxis.set_visible(False)
     # Subplot 1 of acc_x axis
-    ax_1.plot(acc_y, linewidth=0.7)
+    ax_1.plot(np.arange(len(acc_y)), acc_y, linewidth=0.7)
     # Title subplotu
     ax_1.set_title("Unfiltered data")
+    ax_1.set_xlabel("Samples")
+    ax_1.set_ylabel("Raw data")
     # Subplot 2 of acc_x axis
-    ax_2.plot(acc_y_filtered, 'r', linewidth=0.7)
+    ax_2.plot(np.arange(len(acc_y_filtered)), acc_y_filtered, 'r', linewidth=0.7)
     ax_2.axhline(y=0, color='k', linewidth=0.5, linestyle='--')
     ax_2.plot(peaks_y, acc_y_filtered[peaks_y], "v")
     # Title subplotu
     ax_2.set_title("Filtered and normalized  data")
     ax_2.legend(['Data', 'Zero-level', 'Peaks'])
+    ax_2.set_xlabel("Samples")
+    ax_2.set_ylabel("Normalized filtered data")
     # Title całego plotu
     f_2.suptitle("Y-axis")
     # Display
     f_2.show()
 
     plt.figure(3)
-    plt.plot(acc_z, linewidth=0.7)
+    plt.plot(np.arange(len(acc_z)), acc_z, linewidth=0.7)
     plt.suptitle("Z-axis")
+    plt.xlabel("Sample")
+    plt.ylabel("Raw data")
     # Display
     plt.show()
 
