@@ -341,7 +341,7 @@ def find_peaks_custom(some_peaks):
 
 def filter_data(some_array):
     normalized_array = stats.zscore(some_array)
-    filtered_array = savgol_filter(normalized_array, 100, 5)
+    filtered_array = savgol_filter(normalized_array, 101, 5)
     return filtered_array
 
 # funkcja, dzięki której sklejamy wprowadzone przez użytkownika dane odnośnie godziny i daty
